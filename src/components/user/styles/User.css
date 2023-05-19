@@ -1,0 +1,31 @@
+:root{
+    --colorMain: #6372E7;
+    --colorWhite:#ffffff;
+}
+.color-main{
+    color: var(--colorMain);
+}
+.head-table{
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+
+}
+.btn-user{
+    background-color: var(--colorWhite);
+    border: none;
+}
+.img-user{
+    max-width: 60%;
+    height: auto;
+}
+.btn-nuevo{
+    border: none;
+    background-color:var(--colorMain);
+    border-radius: 7px;
+    color: var(--colorWhite);
+    width: 8%;
+    
+}
+.btn-nuevo:hover{
+    background-color: #2536b4;
+}
