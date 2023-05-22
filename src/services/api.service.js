@@ -39,4 +39,20 @@ export const APISERVICE = {
       console.log(error);
     }
   },
+  postWithImage: async (body, url, params = "") => {
+    try {
+      const response = await fetch(`${APIURL}${url}${params}`, {
+        method: "POST",
+        /* headers: {
+          Authorization: token,
+        }, */
+        body: body,
+      });
+      const data = await response.json();
+      data.status = response.status;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
