@@ -2,6 +2,10 @@
     --colorMain: #6372E7;
     --colorWhite:#ffffff;
 }
+.container-user{
+    width: 95%;
+    margin: 0 auto;
+}
 .color-main{
     color: var(--colorMain);
 }

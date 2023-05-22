@@ -54,7 +54,7 @@ export default function User() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container-user">
       <h1 className="color-main mt-4 mb-4">Usuarios</h1>
       <button className="btn-nuevo mb-4" onClick={()=>setModalShow(true)}>Nuevo</button>
       <UserTable

@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { Modal,Form } from "react-bootstrap";
+import './styles/User.css'
 
 export default function UserModal({ 
     show, 
@@ -82,10 +83,10 @@ useEffect(() => {
           </Form.Group>
 
           <Form.Group className="mb-3 d-flex justify-content-evenly">
-            <button className="btn-main-red" onClick={handleCancel}>
+            <button className="btn-global bg-color-red  tc-white" onClick={handleCancel}>
               Cancelar
             </button>
-            <button className="btn-main" onClick={handleSubmit}>
+            <button className="btn-global bg-color-main btn-confirm" onClick={handleSubmit}>
               Confirmar
             </button>
           </Form.Group>

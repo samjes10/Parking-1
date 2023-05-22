@@ -5,3 +5,20 @@
     --colorBlack:#020202;
     --colorGreen:#00a758;
 }
+.bg-color-red{
+    background-color: var(--colorRed);
+}
+.bg-color-main{
+    background-color: var(--colorMain);
+}
+.color-main{
+    color: var(--colorMain);
+}
+.btn-global{
+    border: none;
+    border-radius: 10px;
+    padding: 0px 10px;
+}
+.tc-white{
+    color:#ffffff;
+}
