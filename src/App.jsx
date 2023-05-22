@@ -4,6 +4,7 @@ import "./styles/global/global.css";
 import Customer from "./components/customer/Customer";
 import Sidebar from "./components/global/sidebar/Sidebar";
 import Header from "./components/global/header/Header";
+import Information from "./components/information/Information"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Routes>
             <Route path="/usuarios" element={<User />} />
             <Route path="/customers" element={<Customer />} />
+            <Route path="/informacion" element={<Information />} />
           </Routes>
         </Header>
       </Sidebar>

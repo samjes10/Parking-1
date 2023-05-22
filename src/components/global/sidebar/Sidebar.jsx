@@ -34,8 +34,8 @@ const Sidebar = ({ children }) => {
       icon: <MdInsertInvitation />,
     },
     {
-      path: "/pagos",
-      name: "Pagos",
+      path: "/tarifas",
+      name: "Tarifas",
       icon: <FaMoneyBillAlt />,
     },
     {

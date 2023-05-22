@@ -22,3 +22,20 @@
 .tc-white{
     color:#ffffff;
 }
+ .btn-main{
+        border: none;
+        padding: 7px 15px;
+        border-radius: 10px;
+    }
+    .btn-main__purple{
+        color: var(--colorWhite);
+        background-color: var(--colorMain);
+    }
+    .btn-main__green{
+        color: var(--colorWhite);
+        background-color: var(--colorGreen);
+    }
+    .btn-main__red{
+        color: var(--colorWhite);
+        background-color: var(--colorRed);
+    }
