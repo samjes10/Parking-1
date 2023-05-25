@@ -42,6 +42,18 @@
     width: 50%;
     
 }
+.icon{
+    font-size: 15px;
+    color: #6372E7;
+}
+.btn-customer{
+    background-color: var(--colorWhite);
+    border: none;
+}
+.img-customer{
+    max-width: 60%;
+    height: auto;
+}
 .btn-activar:hover{
     background-color:#2536b4 ;
 }

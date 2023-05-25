@@ -6,6 +6,7 @@ import Sidebar from "./components/global/sidebar/Sidebar";
 import Header from "./components/global/header/Header";
 import Information from "./components/information/Information";
 import Tarifa from "./components/pago/Tarifa"
+import AssignTurn from "./components/asignarturno/AssignTurn";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/customers" element={<Customer />} />
             <Route path="/informacion" element={<Information />} />
             <Route path="/tarifas" element={<Tarifa />} />
+            <Route path="/asignar" element={<AssignTurn/>}/>
           </Routes>
         </Header>
       </Sidebar>

@@ -1,34 +1,31 @@
 import Paginator from "../global/paginador/Paginator";
-import CustomerTableRow from "./CustomerTableRow";
+import AssignTurnTableRow from "./AssignTurnTableRow";
 import { Table } from "react-bootstrap";
-export default function CustomerTable({ 
-  customers,
-  blockCustomer,
+export default function AssignTurnTable({ 
+  users,
+  turn,
+  assignTurn,
   pageInfo,
-  getCustomers,
-  setCustomerUpdate,
-  setModalShow
+  getUsers
 }) {
   return (
     <Table>
       <thead className="head-table">
         <tr>
           <th style={{borderTopLeftRadius: '10px'}}>Nombre</th>
-          <th>Carnet</th>
-          <th>Email</th>
-          <th>Placa</th>
+          <th>Rol</th>
+          <th>Turno</th>
           <th style={{textAlign: 'center', borderTopRightRadius: '10px'}}>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        {customers && customers.length > 0 ? (
-          customers.map((cus) => (
-            <CustomerTableRow
-              key={cus.id}
-              customer={cus}
-              blockCustomer={blockCustomer}
-              setCustomerUpdate={setCustomerUpdate}
-              setModalShow={setModalShow}
+        {users && users.length > 0 ? (
+          users.map((us) => (
+            <AssignTurnTableRow
+              key={us.user.id}
+              usuario={us}
+              turn={turn}
+              assignTurn={assignTurn}
               />
           ))
         ) : (
@@ -38,7 +35,7 @@ export default function CustomerTable({
         )}
           <tr>
               <td colSpan={5}>
-                <Paginator pageInfo={pageInfo} getData={getCustomers} />
+                <Paginator pageInfo={pageInfo} getData={getUsers} />
               </td>
           </tr>
       </tbody>

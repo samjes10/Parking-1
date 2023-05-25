@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Form } from "react-bootstrap";
-import "./styles/User.css";
+import "./styles/AssignTurn.css";
 
-export default function UserModal({ show, onHide, createUser, userUpdate, setUserUpdate, updateUser }) {
+export default function AssignTurnModal({ show, onHide, createUser, userUpdate, setUserUpdate, updateUser }) {
   const initialValues = {
     nombre: "",
     email: "",
@@ -48,29 +48,20 @@ export default function UserModal({ show, onHide, createUser, userUpdate, setUse
     <>
       <Modal show={show} size="lg-sm" aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">Crear Usuario</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">Crear Turno</Modal.Title>
         </Modal.Header>
         <Modal.Body className="ms-3 me-3">
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="nombre">Nombre Completo</Form.Label>
+              <Form.Label htmlFor="nombre">Nombre</Form.Label>
               <Form.Control type="text" id="nombre" name="nombre" value={value.nombre} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" id="email" name="email" value={value.email} onChange={handleChange} />
+              <Form.Label>Hora Inicio</Form.Label>
+              <Form.Control type="time" id="email" name="email" value={value.email} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="text" id="password" name="password" value={value.password ? value.password : ""} onChange={handleChange} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Rol</Form.Label>
-              <Form.Select id="rol" name="rol" value={value.rol} onChange={handleChange}>
-                <option>{value.rol}</option>
-                <option value="administrador">Administrador</option>
-                <option value="operador">Operador</option>
-                <option value="guardia">Guardia</option>
-              </Form.Select>
+              <Form.Label>Hora Fin</Form.Label>
+              <Form.Control type="time" id="password" name="password" value={value.password ? value.password : ""} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3 d-flex justify-content-evenly">
               <button className="btn-global bg-color-red  tc-white" onClick={handleCancel}>

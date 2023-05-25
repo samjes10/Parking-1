@@ -54,8 +54,8 @@ const Sidebar = ({ children }) => {
       icon: <AiFillCustomerService />,
     },
     {
-        path: "/customer-mora",
-        name: "Clientes con Mora",
+        path: "/asignar",
+        name: "Asignar Turno",
         icon: <GiDiscussion />,
       },
       {
