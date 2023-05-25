@@ -55,7 +55,7 @@ const PayModal = ({ show, onHide, createPay, updatePay, productToEdit, setProduc
                 />
             </InputGroup>
             <InputGroup className="mb-3">
-                <InputGroup.Text>Nombre</InputGroup.Text>
+                <InputGroup.Text>Precio</InputGroup.Text>
                 <Form.Control
                     type='text'
                     placeholder='Precio'

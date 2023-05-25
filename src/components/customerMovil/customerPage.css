@@ -1,0 +1,106 @@
+p{
+    margin: 0;
+    padding: 0;
+}
+h5{
+    margin: 0;
+    padding: 0;
+}
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.header-customer{
+    background-color: var(--colorMain);
+}
+.header-customer__content{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.header-customer p{
+    margin: 0;
+    color: var(--colorWhite);
+}
+.header-navigation{
+    visibility: hidden;
+    margin: 0 auto;
+    display: flex;
+    text-decoration: none;
+    
+}
+.header-navigation-visible{
+    visibility: 1;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: var(--colorWhite);
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+}
+.home h5{
+    margin: 10px 0px;
+    text-align: center;
+}
+.home-img{
+    margin-top: 20px;
+}
+.home-img img{
+    width: 100%;
+}
+.seeker input{
+    width: 60%;
+    padding: 5px;
+}
+.seeker{
+    margin: 15px 0px;   
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+.claim{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 15px 0px;
+}
+.claim h5{
+    margin: 0;
+}
+
+.claim textarea{
+    padding: 10px;
+    height: 100px;
+    resize: none;
+}
+
+/* Reservar */
+.reserve-header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 10px 0px;
+}
+.reserve-body{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.reserve-body h5{
+    margin: 0;
+}
+.reserve-body__types{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.qr-img img{
+    width: 100%;
+}
