@@ -7,12 +7,15 @@ import Header from "./components/global/header/Header";
 import Information from "./components/information/Information";
 import Tarifa from "./components/pago/Tarifa"
 import AssignTurn from "./components/asignarturno/AssignTurn";
+import CustomerPage from "./components/customerMovil/CustomerPage";
 
 function App() {
+  const aux=false;
   return (
     <BrowserRouter>
-      <Sidebar>
+    {aux?( <Sidebar>
         <Header>
+
           <Routes>
             <Route path="/usuarios" element={<User />} />
             <Route path="/customers" element={<Customer />} />
@@ -21,7 +24,10 @@ function App() {
             <Route path="/asignar" element={<AssignTurn/>}/>
           </Routes>
         </Header>
-      </Sidebar>
+      </Sidebar>):(<Routes>
+        <Route path="/customer-page" element={<CustomerPage />} />
+      </Routes>)}
+     
     </BrowserRouter>
   );
 }
