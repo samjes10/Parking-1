@@ -1,7 +1,7 @@
 const ClaimTableRow = ({claim}) => {
   return (
     <tr>
-        <td>{claim.nombre}</td>
+        <td>{claim.nombre_completo}</td>
         <td>{claim.mensaje}</td>
     </tr>
   )

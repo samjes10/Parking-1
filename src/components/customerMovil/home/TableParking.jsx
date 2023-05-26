@@ -1,11 +1,19 @@
 import { Table } from "react-bootstrap";
+import { navigationNames } from "../CustomerPage";
 
 export const placeState = {
   DISPONIBLE: "disponible",
   OCUPADO: "ocupado",
 };
 
-const TableParking = ({ placeInformation }) => {
+
+
+const TableParking = ({ placeInformation, setPlaceNumberGlobal, setView }) => {
+  const handleReserve = (place) => {
+    setPlaceNumberGlobal(place);
+    setView(navigationNames.RESERVAR)
+  }
+
   return (
     <Table>
       <thead>
@@ -23,7 +31,7 @@ const TableParking = ({ placeInformation }) => {
               <td>{place.estado}</td>
               <td>
                 {place.estado === placeState.DISPONIBLE ? (
-                  <button className="btn-main btn-main__green">Reservar</button>
+                  <button className="btn-main btn-main__green" onClick={() => handleReserve(place)}>Reservar</button>
                 ) : (
                   <button className="btn-main btn-main__red">Resevado</button>
                 )}
