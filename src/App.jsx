@@ -10,7 +10,7 @@ import AssignTurn from "./components/asignarturno/AssignTurn";
 import CustomerPage from "./components/customerMovil/CustomerPage";
 
 function App() {
-  const aux=false;
+  const aux=true;
   return (
     <BrowserRouter>
     {aux?( <Sidebar>
