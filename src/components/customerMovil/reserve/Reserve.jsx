@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import ReserveInfo from "../reserveInfo/ReserveInfo";
-const APIURLIMG = "http://localhost:8080/upload/";
+import { APISERVICE } from "../../../services/api.service";
+import { navigationNames } from "../CustomerPage";
+const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 export const payTypes = {
   EFECTIVO: "efectivo",
   QR: "qr",
@@ -11,10 +13,12 @@ const initialState = {
   tarifa: 0,
   tiempo: "",
   pago: "",
+  comprobante: ''
 };
 
-const Reserve = ({ tarifas, information }) => {
+const Reserve = ({ tarifas, information , placeNumber, reserve, setView}) => {
   const [reserveInfo, setReserveInfo] = useState(initialState);
+
   const handleOnChange = (e) => {
     let tarifa = tarifas.find((tar) => tar.nombre === e.target.value);
     console.log(tarifa);
@@ -32,6 +36,16 @@ const Reserve = ({ tarifas, information }) => {
       setReserveInfo({ ...reserveInfo, pago: payTypes.EFECTIVO });
     }
   };
+
+  const handleReserve = () => {
+    const tarifa = tarifas.find(tar => tar.nombre === reserveInfo.tiempo && tar.costo === reserveInfo.tarifa)
+    reserve(reserveInfo, tarifa.id);
+  }
+
+  const handleOnChangeFile = (e) => {
+    setReserveInfo({...reserveInfo, [e.target.name]: e.target.files[0]});
+  }
+
   return (
     <section>
       <h5>Reservar</h5>
@@ -79,6 +93,18 @@ const Reserve = ({ tarifas, information }) => {
           )}
         </div>
       </div>
+      
+      <p>Numeero de plaza: {placeNumber.numero}</p>
+
+      <Form.Control
+        style={{margin: '15px 0px'}}
+        type="file"
+        onChange={handleOnChangeFile}
+        name="comprobante"
+      />
+
+      <button className="btn-main btn-main__purple" onClick={handleReserve}>Reservar</button>{" "}
+      <button className="btn-main btn-main__green" onClick={() => setView(navigationNames.HOME)}>Volver</button>
     </section>
   );
 };

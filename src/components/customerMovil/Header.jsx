@@ -4,7 +4,7 @@ import { navigationNames } from "./CustomerPage";
 
 const heightNavigation = {
   MIN: 0,
-  MAX: 170,
+  MAX: 140,
 };
 
 const Header = ({setView}) => {
@@ -32,7 +32,7 @@ const Header = ({setView}) => {
       <div style={{ height: `${heigth}px` }}>
         <ul className={ heigth === 0 ? 'header-navigation' : 'header-navigation-visible'}>
           <li onClick={() => handleChangeView(navigationNames.HOME)}>Home</li>
-          <li onClick={() => handleChangeView(navigationNames.RESERVAR)}>Reservar</li>
+      {/*     <li onClick={() => handleChangeView(navigationNames.RESERVAR)}>Reservar</li> */}
           <li onClick={() => handleChangeView(navigationNames.INFORMACION)}>Informacion</li>
           <li onClick={() => handleChangeView(navigationNames.SUGERENCIAS)}>Sugerencias</li>
         </ul>

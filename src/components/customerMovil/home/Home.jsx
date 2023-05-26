@@ -3,22 +3,22 @@ import Seeker from "./Seeker";
 import TableParking from "./TableParking";
 import { APISERVICE } from "../../../services/api.service";
 
-const APIURLIMG = "http://localhost:8080/upload/";
+const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 
-const HomeCustomer = ({ information }) => {
+const HomeCustomer = ({ information, setPlaceNumberGlobal, setView }) => {
+  const [placeNumber, setPlaceNumber] = useState("");
+  const [placeInformation, setPlaceInformation] = useState({});
 
-  const [placeNumber , setPlaceNumber  ] = useState('')
-  const [placeInformation, setPlaceInformation] = useState({})
   const getParkingSpace = async () => {
-    const url = 'plaza/get-place?'
-    const params = `placeNumber=${placeNumber}`
+    const url = "plaza/get-place?";
+    const params = `placeNumber=${placeNumber}`;
     const { success, placeInformation } = await APISERVICE.get(url, params);
-    if(success){
-      setPlaceInformation(placeInformation)
-    }else{
-      setPlaceInformation([])
+    if (success) {
+      setPlaceInformation(placeInformation);
+    } else {
+      setPlaceInformation([]);
     }
-  }
+  };
 
   return (
     <section className="home">
@@ -28,10 +28,18 @@ const HomeCustomer = ({ information }) => {
       </div>
 
       <div>
-        <Seeker placeNumber={placeNumber}  setPlaceNumber={setPlaceNumber} getParkingSpace={getParkingSpace}/>
-        <TableParking  placeInformation={placeInformation}/>
+        <Seeker
+          placeNumber={placeNumber}
+          setPlaceNumber={setPlaceNumber}
+          getParkingSpace={getParkingSpace}
+          setPlaceInformation={setPlaceInformation}
+        />
+        <TableParking
+          setView={setView}
+          placeInformation={placeInformation}
+          setPlaceNumberGlobal={setPlaceNumberGlobal}
+        />
       </div>
-
     </section>
   );
 };

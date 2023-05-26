@@ -13,9 +13,12 @@ h5{
 }
 .header-customer{
     background-color: var(--colorMain);
+    position: sticky;
+    top: 0;
+    width: 100%;
 }
 .header-customer__content{
-    height: 80px;
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: space-between;
