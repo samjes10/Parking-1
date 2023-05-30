@@ -76,7 +76,7 @@ export default function UserModal({ show, onHide, createUser, userUpdate, setUse
               <button className="btn-global bg-color-red  tc-white" onClick={handleCancel}>
                 Cancelar
               </button>
-              <button className="btn-global bg-color-main btn-confirm" onClick={handleSubmit}>
+              <button className="btn-main btn-main__purple" onClick={handleSubmit}>
                 Confirmar
               </button>
             </Form.Group>

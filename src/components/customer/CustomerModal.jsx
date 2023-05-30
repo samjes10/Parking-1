@@ -9,6 +9,9 @@ export default function CustomerModal({ show, onHide, createCustomer, customerUp
     email: "",
     placa:"",
     password: "",
+    telefono:"",
+    cargo:"",
+    unidad:""
   };
   console.log(customerUpdate.id);
   const [value, setValue] = useState(initialValues);
@@ -66,7 +69,19 @@ export default function CustomerModal({ show, onHide, createCustomer, customerUp
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Placa</Form.Label>
-              <Form.Control type="number" id="placa" name="placa" value={value.placa} onChange={handleChange} />
+              <Form.Control type="text" id="placa" name="placa" value={value.placa} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Telefono</Form.Label>
+              <Form.Control type="number" id="telefono" name="telefono" value={value.telefono} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Cargo</Form.Label>
+              <Form.Control type="text" id="cargo" name="cargo" value={value.cargo} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Unidad</Form.Label>
+              <Form.Control type="text" id="unidad" name="unidad" value={value.unidad} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
@@ -76,7 +91,7 @@ export default function CustomerModal({ show, onHide, createCustomer, customerUp
               <button className="btn-global bg-color-red  tc-white" onClick={handleCancel}>
                 Cancelar
               </button>
-              <button className="btn-global bg-color-main btn-confirm" onClick={handleSubmit}>
+              <button className="btn-main btn-main__purple" onClick={handleSubmit}>
                 Confirmar
               </button>
             </Form.Group>

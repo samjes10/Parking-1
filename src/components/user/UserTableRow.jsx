@@ -1,5 +1,5 @@
-import edit from '../../assets/edit.png'
-import borrar from '../../assets/borrar.png'
+import {FiEdit} from "react-icons/fi"
+import {BsFillTrashFill} from "react-icons/bs"
 export default function UserTableRow({   
     user,
     deleteUser,
@@ -21,8 +21,8 @@ export default function UserTableRow({
       <td>{user.email}</td>
       <td>{user.rol}</td>
       <td className="col-2" style={{ textAlign: "center" }}>
-        <button className="btn-user" onClick={() => handleEditUser()}><img className='img-user' src={edit} alt='icon-edit'/></button>
-        <button className="btn-user" onClick={() => handleDeleteCustomer()}><img className='img-user' src={borrar} alt='icon-delete'/></button>
+        <button className="btn-user" onClick={() => handleEditUser()}><FiEdit className="icon" /></button>
+        <button className="btn-user" onClick={() => handleDeleteCustomer()}><BsFillTrashFill className="icon ms-4"/></button>
       </td>
     </tr>
   );

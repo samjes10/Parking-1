@@ -6,7 +6,7 @@ import './styles/AssignTurn.css'
 
 export default function AssignTurn() {
   const [users, setUsers] = useState([]);
-  const [userUpdate, setUserUpdate] = useState({});
+  const [turnUpdate, setTurnUpdate] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const [pageInfo, setPageInfo] = useState(1);
   const [turn, setTurn] = useState([])
@@ -20,18 +20,19 @@ export default function AssignTurn() {
       console.log(response);
     }
   };
-  const createUser = async (user) => {
-    let url = "usuario/create-user";
+  const createTurn = async (user) => {
+    let url = "turno/create-turn";
     const response = await APISERVICE.post(user, url);
     if (response.status === 201) {
       console.log("Usuario agregado exitosamente!");
     }
     getUsers();
+    getTurno();
   };
-  const updateUser = async (user) => {
-    let url = `usuario/update?`;
-    let params = `idUser=${user.id}`;
-    const response = await APISERVICE.post(user, url, params);
+  const updateTurn = async (turn) => {
+    let url = `turno/update?`;
+    let params = `id=${turn.id}`;
+    const response = await APISERVICE.post(turn, url, params);
     if (response.status === 200) {
       console.log("Usuario Actualizado");
     }
@@ -62,7 +63,7 @@ export default function AssignTurn() {
   return (
     <div className="container-user">
       <h1 className="color-main mt-4 mb-4">Asignar Turno</h1>
-      <button className="btn-nuevo mb-4" onClick={()=>setModalShow(true)}>Nuevo Turno</button>
+      <button className="btn-main btn-main__purple mb-3" onClick={()=>setModalShow(true)}>Nuevo Turno</button>
       <AssignTurnTable
         users={users}
         turn={turn}
@@ -73,10 +74,10 @@ export default function AssignTurn() {
       <AssignTurnModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        createUser={createUser}
-        userUpdate={userUpdate}
-        setUserUpdate={setUserUpdate}
-        updateUser={updateUser}
+        createTurn={createTurn}
+        turnUpdate={turnUpdate}
+        setTurnUpdate={setTurnUpdate}
+        updateTurn={updateTurn}
       />
     </div>
   );

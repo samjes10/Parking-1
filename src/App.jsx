@@ -11,6 +11,7 @@ import CustomerPage from "./components/customerMovil/CustomerPage";
 import Claim from './components/claim/Claim'
 import ParkingRequest from './components/ParkingRequest/ParkingRequest'
 import Parking from "./components/Parking/Parking";
+import Config from "./components/config/Config";
 function App() {
   const aux=true;
   return (
@@ -26,7 +27,8 @@ function App() {
               <Route path="/asignar" element={<AssignTurn />} />
               <Route path="/reclamos" element={<Claim/>} />
               <Route path="/solicitud" element={<ParkingRequest/>} />
-              <Route path="/parking" element={<Parking/>} />
+              <Route path="/parqueo" element={<Parking/>} />
+              <Route path="/config" element={<Config/>} /> 
             </Routes>
           </Header>
         </Sidebar>

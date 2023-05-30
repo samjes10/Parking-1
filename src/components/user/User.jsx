@@ -56,7 +56,7 @@ export default function User() {
   return (
     <div className="container-user">
       <h1 className="color-main mt-4 mb-4">Usuarios</h1>
-      <button className="btn-nuevo mb-4" onClick={()=>setModalShow(true)}>Nuevo</button>
+      <button className="btn-main btn-main__purple mb-3" onClick={()=>setModalShow(true)}>Nuevo</button>
       <UserTable
         users={users}
         deleteUser={deleteUser}

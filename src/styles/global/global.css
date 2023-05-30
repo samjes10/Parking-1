@@ -39,3 +39,7 @@
         color: var(--colorWhite);
         background-color: var(--colorRed);
     }
+    .icon, .link_text{
+        font-size: 18px;
+        color: #6372E7;
+    }

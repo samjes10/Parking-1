@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Modal, Form } from "react-bootstrap";
 import "./styles/AssignTurn.css";
 
-export default function AssignTurnModal({ show, onHide, createUser, userUpdate, setUserUpdate, updateUser }) {
+export default function AssignTurnModal({ show, onHide, createTurn, turnUpdate, setTurnUpdate, updateTurn }) {
   const initialValues = {
     nombre: "",
-    email: "",
-    password: "",
-    rol: "",
+    hora_inicio: "",
+    hora_fin: "",
   };
-  console.log(userUpdate.id);
+  console.log(turnUpdate.id);
   const [value, setValue] = useState(initialValues);
 
   const handleChange = (e) => {
@@ -22,23 +21,23 @@ export default function AssignTurnModal({ show, onHide, createUser, userUpdate, 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (userUpdate.id) {
-      updateUser(value);
+    if (turnUpdate.id) {
+      updateTurn(value);
       onHide();
     } else {
-      createUser(value);
+      createTurn(value);
       onHide();
     }
-    setUserUpdate({});
+    setTurnUpdate({});
   };
 
   const handleCancel = () => {
-    setUserUpdate({});
+    setTurnUpdate({});
     onHide();
   };
   useEffect(() => {
-    if (Object.keys(userUpdate).length !== 0) {
-      setValue(userUpdate);
+    if (Object.keys(turnUpdate).length !== 0) {
+      setValue(turnUpdate);
     } else {
       setValue(initialValues);
     }
@@ -57,17 +56,17 @@ export default function AssignTurnModal({ show, onHide, createUser, userUpdate, 
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Hora Inicio</Form.Label>
-              <Form.Control type="time" id="email" name="email" value={value.email} onChange={handleChange} />
+              <Form.Control type="time" id="hora_inicio" name="hora_inicio" value={value.hora_inicio} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Hora Fin</Form.Label>
-              <Form.Control type="time" id="password" name="password" value={value.password ? value.password : ""} onChange={handleChange} />
+              <Form.Control type="time" id="hora_fin" name="hora_fin" value={value.hora_fin} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3 d-flex justify-content-evenly">
               <button className="btn-global bg-color-red  tc-white" onClick={handleCancel}>
                 Cancelar
               </button>
-              <button className="btn-global bg-color-main btn-confirm" onClick={handleSubmit}>
+              <button className="btn-main btn-main__purple" onClick={handleSubmit}>
                 Confirmar
               </button>
             </Form.Group>

@@ -6,6 +6,7 @@ import { HiUsers,HiOutlineDocumentReport } from "react-icons/hi";
 import { AiFillCustomerService } from "react-icons/ai";
 import { BsInfoSquareFill,BsExclamationCircleFill } from "react-icons/bs";
 import { GiDiscussion} from "react-icons/gi"
+import {TbParking} from "react-icons/tb"
 import { NavLink } from "react-router-dom";
 import "./styles/Sidebar.css";
 
@@ -17,6 +18,11 @@ const Sidebar = ({ children }) => {
       path: "/",
       name: "Dashboard",
       icon: <MdDashboard />,
+    },
+    {
+      path: "/parqueo",
+      name: "Parqueo",
+      icon: <TbParking />,
     },
     {
       path: "/informacion",

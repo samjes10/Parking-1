@@ -1,4 +1,4 @@
-const APIURL =  import.meta.env.VITE_REACT_APP_API_URL;
+const APIURL =  'http://localhost:8080/';
 
 export const APISERVICE = {
   get: async (url, params = "") => {
