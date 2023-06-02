@@ -3,7 +3,8 @@ import { navigationNames } from "../CustomerPage";
 
 export const placeState = {
   DISPONIBLE: "disponible",
-  OCUPADO: "ocupado",
+  ASIGNADO: "asignado",
+  SOLICITADO: 'solicitado'
 };
 
 

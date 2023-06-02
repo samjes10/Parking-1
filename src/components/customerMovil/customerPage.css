@@ -86,10 +86,10 @@ h5{
 
 /* Reservar */
 .reserve-header{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    display: flex;
+    gap: 10px;
     margin: 10px 0px;
+    align-items: end;
 }
 .reserve-body{
     display: flex;
@@ -106,4 +106,60 @@ h5{
 }
 .qr-img img{
     width: 100%;
+}
+
+.reserve-btns{
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+    min-width: 60px;
+    padding-bottom: 7px;
+}
+.reserve-btns button{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+}       
+.state-reserve{
+    padding: 7px 0px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 15px 0px;
+    color: var(--colorBlack);
+}
+.approved{
+    background-color: var(--colorGreen);
+    color: var(--colorWhite);
+}
+.cancel{
+    background-color: var(--colorRed);
+    color: var(--colorWhite);    
+}
+.state-reserve p{
+    margin: 0;
+}
+.state-reserve p span{
+    text-transform: uppercase;
+}
+.info-reserve{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.info-reserve__pay{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    margin-top: 15px;
+}
+.info-reserve__pay p{
+    margin: 5px 0px;
+}
+.payment-fee{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

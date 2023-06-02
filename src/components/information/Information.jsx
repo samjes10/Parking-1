@@ -12,6 +12,7 @@ const initialState = {
   fecha_inicio_reserva: "",
   atencion: "",
   mensaje_mora: "",
+  fecha_fin_reserva: '',
 };
 
 const Information = () => {
@@ -46,7 +47,7 @@ const Information = () => {
 
   const handleUpdate = async () => {
     if (isValid()) {
-      const {foto, qr, convocatoria, fecha_inicio_reserva, fecha_limite_reserva, fecha_pub_conv, mensaje_mora, atencion} = information;
+      const {foto, qr, convocatoria, fecha_inicio_reserva, fecha_limite_reserva, fecha_pub_conv, mensaje_mora, atencion, fecha_fin_reserva} = information;
       const url = "informacion/update-information";
       const body = new FormData();
 
@@ -55,7 +56,8 @@ const Information = () => {
         fecha_limite_reserva,
         fecha_pub_conv,
         mensaje_mora, 
-        atencion
+        atencion,
+        fecha_fin_reserva
       }
 
       body.append("data", JSON.stringify(data));
@@ -153,6 +155,22 @@ const Information = () => {
             value={information.fecha_inicio_reserva}
             onChange={handleOnChange}
             name="fecha_inicio_reserva"
+          />
+        </InputGroup>
+
+        <InputGroup>
+          <label
+            className="information__form-label"
+            htmlFor="fecha_fin_reserva"
+          >
+            Fecha Inicio Reserva
+          </label>
+          <Form.Control
+            type="date"
+            id="fecha_fin_reserva"
+            value={information.fecha_fin_reserva}
+            onChange={handleOnChange}
+            name="fecha_fin_reserva"
           />
         </InputGroup>
 

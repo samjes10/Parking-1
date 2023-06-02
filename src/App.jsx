@@ -12,7 +12,9 @@ import Claim from './components/claim/Claim'
 import ParkingRequest from './components/ParkingRequest/ParkingRequest'
 import Parking from "./components/Parking/Parking";
 import Config from "./components/config/Config";
+import Plazas from "./components/plaza/Plazas";
 function App() {
+  //const aux=true;
   const aux=true;
   return (
     <BrowserRouter>
@@ -29,6 +31,7 @@ function App() {
               <Route path="/solicitud" element={<ParkingRequest/>} />
               <Route path="/parqueo" element={<Parking/>} />
               <Route path="/config" element={<Config/>} /> 
+              <Route path="/plazas" element={<Plazas/>} /> 
             </Routes>
           </Header>
         </Sidebar>

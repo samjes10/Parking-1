@@ -14,9 +14,9 @@ export default function GridParking({ plazas, parkins, setModalShow,setPlazaUpda
       className="grid-container"
     >
       {plazas.map((card) => (
-        <div key={card.id} className={card.tipo?"card":""}>
+        <div key={card.id} className={card.habilitado?"card":""}>
           <button className="btn-card" onClick={() => handleHabilitar(card)}>
-            {card.tipo ? <h2 className="numero">{card.numero}</h2>:<GiPathTile className="icon-path"/>}
+            {card.habilitado ? <h2 className="numero">{card.numero}</h2>:<GiPathTile className="icon-path"/>}
             
           </button>
         </div>

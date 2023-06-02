@@ -5,7 +5,7 @@ import { APISERVICE } from "../../../services/api.service";
 
 const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 
-const HomeCustomer = ({ information, setPlaceNumberGlobal, setView }) => {
+const HomeCustomer = ({ information, setPlaceNumberGlobal, setView, infoReserve }) => {
   const [placeNumber, setPlaceNumber] = useState("");
   const [placeInformation, setPlaceInformation] = useState({});
 
@@ -20,6 +20,20 @@ const HomeCustomer = ({ information, setPlaceNumberGlobal, setView }) => {
     }
   };
 
+  const searchPlaza =  <div>
+  <Seeker
+    placeNumber={placeNumber}
+    setPlaceNumber={setPlaceNumber}
+    getParkingSpace={getParkingSpace}
+    setPlaceInformation={setPlaceInformation}
+  />
+  <TableParking
+    setView={setView}
+    placeInformation={placeInformation}
+    setPlaceNumberGlobal={setPlaceNumberGlobal}
+  />
+</div>
+
   return (
     <section className="home">
       <h5>Imagen de Parqueo</h5>
@@ -27,19 +41,7 @@ const HomeCustomer = ({ information, setPlaceNumberGlobal, setView }) => {
         <img src={`${APIURLIMG}${information.foto}`} alt="foto parqueo" />
       </div>
 
-      <div>
-        <Seeker
-          placeNumber={placeNumber}
-          setPlaceNumber={setPlaceNumber}
-          getParkingSpace={getParkingSpace}
-          setPlaceInformation={setPlaceInformation}
-        />
-        <TableParking
-          setView={setView}
-          placeInformation={placeInformation}
-          setPlaceNumberGlobal={setPlaceNumberGlobal}
-        />
-      </div>
+      {Object.keys(infoReserve).length === 0 && searchPlaza}
     </section>
   );
 };
