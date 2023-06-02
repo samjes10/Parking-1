@@ -44,7 +44,6 @@ export default function Config() {
     let params = `id=${plaza.id}`;
     const response = await APISERVICE.post(plaza, url, params);
     if (response.status === 200) {
-      console.log("Pla Actualizado");
     }
     getPlazas();
   };

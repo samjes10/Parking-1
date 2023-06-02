@@ -1,0 +1,38 @@
+.parking{
+    margin: 30px;
+}
+.parking-grilla{
+    background-color: rgb(163, 163, 163);
+    display: grid;
+    place-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.place{
+    width: 100%;
+    min-height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.place p{
+    margin: 0;
+}
+.place-available{
+    background-color: var(--colorGreen);
+}   
+.place-disabled{
+    background-color: var(--colorRed);
+}
+.place-road{
+    background-color: orange;
+}
+.place-request{
+    background-color: var(--colorMain);
+}
+

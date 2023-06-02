@@ -1,3 +1,34 @@
 .parking-request{
     margin: 30px;
 }
+
+.modal-img{
+    max-width: 300px;
+    margin: 0 auto;
+}
+.modal-img img{
+    width: 100%;
+}
+
+/* Parking */
+.reserve-coutas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0px;
+}
+.reserve-coutas p{
+    margin: 0;
+}
+
+.reserve-coutas-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.reserve-coutas span{
+    font-weight: 600;
+}
+.modal-body p{
+    margin: 2px 0px;
+}

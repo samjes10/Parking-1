@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap"
 import ParkingRequestTableRow from "./ParkingRequestTableRow"
 
-const ParkingRequestTable = ({requests, pageInfo, getParkingRequest}) => {
+const ParkingRequestTable = ({requests, pageInfo, getParkingRequest,  setShowRequests, setRequestToReserve, cancelRequest}) => {
   return (
     <Table>
       <thead>
@@ -9,16 +9,18 @@ const ParkingRequestTable = ({requests, pageInfo, getParkingRequest}) => {
           <th>Nombre</th>
           <th>Carnet</th>
           <th>Placa</th>
+          <th>Telefono</th>
+          <th>Estado</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         {
           requests && requests.length > 0 ? 
-            requests.map( req =>  <ParkingRequestTableRow key={req.id} request={req}/>)
+            requests.map( req =>  <ParkingRequestTableRow key={req.id} request={req} setRequestToReserve={setRequestToReserve} setShowRequests={setShowRequests} cancelRequest={cancelRequest}/>)
           :
           <tr>
-            <td>No existen reservas</td>
+            <td style={{textAlign:'center'}} colSpan={4}>No existen reservas</td>
           </tr>
         }
       </tbody>

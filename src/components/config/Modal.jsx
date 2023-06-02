@@ -5,7 +5,7 @@ import { Modal, Form } from "react-bootstrap";
 export default function UserModal({ show, onHide, createPlaza, plazaUpdate, setPlazaUpdate, updatePlaza }) {
   const initialValues = {
     numero: "",
-    tipo: "",
+    habilitado: "",
   };
   console.log(plazaUpdate.id);
   const [value, setValue] = useState(initialValues);
@@ -67,9 +67,9 @@ export default function UserModal({ show, onHide, createPlaza, plazaUpdate, setP
               <Form.Control type="text" id="numero" name="numero" value={value.numero} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Tipo</Form.Label>
-              <Form.Select id="tipo" name="tipo" onChange={handleChange}>
-                <option >{plazaUpdate.tipo?'Plaza':"Camino"}</option>
+              <Form.Label>habilitado</Form.Label>
+              <Form.Select id="habilitado" name="habilitado" onChange={handleChange}>
+                <option >{plazaUpdate.habilitado?'Plaza':"Camino"}</option>
                 <option value="plaza">Plaza</option>
                 <option value="camino">Camino</option>
               </Form.Select>
