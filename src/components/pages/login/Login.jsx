@@ -30,6 +30,7 @@ export default function Login() {
             email: user.email,
             accessToken: response.accessToken,
             rol: Object.keys(response.rol)[0],
+            id: response.id
           };
           dispatch(createUser(userLoged));
       navigate(`/dashboard`);

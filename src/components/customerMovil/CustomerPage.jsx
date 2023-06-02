@@ -8,14 +8,15 @@ import "./customerPage.css";
 import { APISERVICE } from "../../services/api.service";
 import { Toaster, toast } from "react-hot-toast";
 import { placeState } from "./home/TableParking";
+import { useSelector } from "react-redux";
 export const navigationNames = {
   HOME: "home",
   RESERVAR: "reservar",
   INFORMACION: "informacion",
   SUGERENCIAS: "sugerencias",
 };
-
-const USERID = 3;
+/* 
+const USERID = 3; */
 const CustomerPage = () => {
   const [view, setView] = useState(navigationNames.HOME);
   const [information, setInformation] = useState({});
@@ -23,6 +24,8 @@ const CustomerPage = () => {
   const [placeNumber, setPlaceNumber] = useState();
   const [infoReserve, setInfoReserve] = useState({})
   const [dates, setDates] = useState({})
+  const USERID = useSelector(store => store.user.id);
+
 
   useEffect(() => {
     getInformation();

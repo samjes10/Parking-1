@@ -12,6 +12,7 @@ import Claim from "../../claim/Claim";
 import ParkingRequest from "../../ParkingRequest/ParkingRequest";
 import Parking from "../../Parking/Parking";
 import Config from "../../config/Config";
+import Plazas from '../../../components/plaza/Plazas'
 function Private() {
   return (
     <Sidebar>
@@ -28,6 +29,7 @@ function Private() {
           <Route path="/solicitud" element={<ParkingRequest />} />
           <Route path="/parqueo" element={<Parking />} />
           <Route path="/config" element={<Config />} />     
+          <Route path="/plazas" element={<Plazas/>} />     
 
         </Routes>
       </Header>

@@ -3,6 +3,7 @@ const initialState = {
   email: "",
   accessToken: "",
   rol: "",
+  id: ''
 };
 const persistLocalStorage = (key, values) => {
   localStorage.setItem(key, JSON.stringify({ ...values }));
