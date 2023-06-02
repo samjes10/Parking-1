@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import configReducer from '../redux/states/user'
+import userReducer from "./state/user"
 
 export default configureStore({
   reducer: {
-    user: configReducer,
+    user: userReducer,
   },
 })

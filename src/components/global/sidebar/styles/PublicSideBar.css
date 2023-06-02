@@ -1,0 +1,91 @@
+:root{
+    --colorMain: #002E5E;
+    --colorWhite: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* Globales */
+
+.contenedor{
+    max-width: 1800px;
+    width: 90%;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+}
+/* Header Administracion */
+.header-bg{
+    background-blend-mode: multiply;
+    background-image: url(https://www.umss.edu.bo/wp-content/uploads/2021/11/5650360.png),linear-gradient(56deg,#002a4c 76%,#e30613 100%)!important;
+    
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+.header__logo{
+    max-width: 150px;
+}
+.header__logo img{
+    width: 100%;
+    border-radius: 10px;
+}
+.header__navegation ul li a{
+    gap: 10px;
+}
+.header__navegacion ul{
+    display: flex;
+    color: var(--colorBlanco);
+    text-decoration: none;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    cursor:pointer;
+}
+/* Tabla docentes habilitados */
+
+
+.input-search-docente{
+    display: flex;
+    gap: 10px;
+}
+
+.color-white:hover{
+    color: var(--colorWhite);
+    border-bottom: 1px solid var(--colorWhite);
+}
+
+.nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin-right: 1rem;
+  }
+  
+  .nav-link {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--colorWhite);
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #f44336;
+  }
+  

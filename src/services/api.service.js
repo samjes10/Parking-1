@@ -1,9 +1,20 @@
 const APIURL =  'http://localhost:8080/';
+let token = '';
+function getToken ( ) {
+  const tokenLocal = JSON.parse(localStorage.getItem('user'));
+  token = tokenLocal ? `Bearer ${tokenLocal.accessToken}`: ''
+}
+getToken();
+
 
 export const APISERVICE = {
   get: async (url, params = "") => {
     try {
-      const response = await fetch(`${APIURL}${url}${params}`);
+      const response = await fetch(`${APIURL+url+params}`, {
+        headers:{
+          Authorization:token,
+        },
+      });
       const data = await response.json();
       data.status = response.status;
       return data;
@@ -17,6 +28,7 @@ export const APISERVICE = {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          Authorization:token
         },
         body: JSON.stringify(body),
       });

@@ -11,7 +11,7 @@ export default function Customer() {
   const [customerUpdate, setCustomerUpdate] = useState({});
 
   const getCustomers = async (page = 1) => {
-    let url = "cliente/?";
+    let url = "usuario/get-clients?";
     let params = `page=${page}`;
     const response = await APISERVICE.get(url, params);
     if (response.status === 200) {
@@ -21,7 +21,7 @@ export default function Customer() {
     }
   };
   const createCustomer = async (customer) => {
-    let url = "cliente/create-client";
+    let url = "usuario/create-client";
     const response = await APISERVICE.post(customer, url);
     if (response.status === 201) {
       console.log("Usuario agregado exitosamente!");
@@ -29,7 +29,7 @@ export default function Customer() {
     getCustomers();
   };
   const updateCustomer = async (user) => {
-    let url = `cliente/update-customer?`;
+    let url = `usuario/update-customer?`;
     let params = `id=${user.id}`;
     const response = await APISERVICE.post(user, url, params);
     if (response.status === 200) {
@@ -38,7 +38,7 @@ export default function Customer() {
     getCustomers();
   };
   const blockCustomer = async (id) => {
-    let url = `cliente/disable-client?`;
+    let url = `usuario/disable-client?`;
     let params = `id=${id}`;
     const response = await APISERVICE.get(url, params);
     if (response.status === 200) {
