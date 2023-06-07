@@ -11,6 +11,9 @@ h5{
     max-width: 1200px;
     margin: 0 auto;
 }
+.section{
+    margin-bottom: 20px;
+}
 .header-customer{
     background-color: var(--colorMain);
     position: sticky;

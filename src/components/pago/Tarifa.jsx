@@ -3,6 +3,7 @@ import { APISERVICE } from "../../services/api.service";
 import PayTable from "./TarifaTable";
 import PayModal from "./TarifaModal";
 import './Tarifa.css'
+import { Toaster, toast } from "react-hot-toast";
 
 
 const payments = [];
@@ -28,11 +29,12 @@ const Pago = () => {
 
   const createPay = async (body) => {
     const url = "tarifa/create";
-    const { success, pageInfo, payments } = await APISERVICE.post(body, url);
+    const { success, message } = await APISERVICE.post(body, url);
     if (success) {
-      setPayments(payments);
-      setInfoPage(pageInfo);
       getPayments();
+      messageToastSuccess(message)
+    }else{
+      messageToastSuccess(message)
     }
   };
 
@@ -53,6 +55,15 @@ const Pago = () => {
       getPayments();
     }
   };
+
+  const messageToastSuccess = (sms) => {
+    toast.success(sms);
+  }
+
+  const messageToastError = (sms) => {
+    toast.error(sms);
+  }
+
 
   return (
     <div className="container tarifa">
@@ -80,6 +91,7 @@ const Pago = () => {
         productToEdit={productToEdit}
         setProductToEdit={setProductToEdit}
       />
+      <Toaster position="top-right"/>
     </div>
   );
 };

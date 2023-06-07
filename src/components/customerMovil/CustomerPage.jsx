@@ -25,12 +25,15 @@ const CustomerPage = () => {
   const [infoReserve, setInfoReserve] = useState({})
   const [dates, setDates] = useState({})
   const USERID = useSelector(store => store.user.id);
-
+  const [parkingInfo, setParkingInfo] = useState({});
+  const [places, setPlaces] = useState([]);
 
   useEffect(() => {
     getInformation();
     getTarifas();
     getInfoReserve();
+    getInfoParking();
+    getPlaces();
   }, []);
 
   const getInfoReserve = async () => {
@@ -93,20 +96,21 @@ const CustomerPage = () => {
       couta: info.couta, //si puso la opcion de pagar en coutas
       monthsPaid: info.meses,
       total: info.total,
-      fecha_inicio: dates.fecha_inicio_reserva,
-      fecha_fin:  dates.fecha_fin_reserva,
+      fecha_fin:  info.dateEnd,
       cantidad: info.cantidad,
     }
 
     fd.append("data", JSON.stringify(body));
     fd.append("img", info.comprobante)
-    const { success, reserve } = await APISERVICE.postWithImage(fd, url);
+    const { success, reserve, message} = await APISERVICE.postWithImage(fd, url);
     if(success){
       getInfoReserve();
       setView(navigationNames.HOME);
+      messageToastSuccess(message)
     }else{
 
     }
+    console.log(info)
   };
 
   const payFee = async (infoPayment, idReserve, isQr) => {
@@ -123,11 +127,30 @@ const CustomerPage = () => {
     const fd = new FormData();
     fd.append('data', JSON.stringify(data));
     infoPayment.comprobante ? fd.append('img', infoPayment.comprobante) : ''
-    const { success } = await APISERVICE.postWithImage(fd, url, params);
+    const { success, message} = await APISERVICE.postWithImage(fd, url, params);
     if(success){
       getInfoReserve();
+      messageToastSuccess(message);
     }
   }
+  const getInfoParking = async () => {
+    const url = "parqueo/get-info-parking";
+    const { success, parking } = await APISERVICE.get(url);
+    
+    if (success) {
+      setParkingInfo(parking);
+    } else {
+    }
+  };
+  const getPlaces = async () => {
+    const url = "plaza/get-places?";
+    const { success, places } = await APISERVICE.get(url);
+    if (success) {
+      setPlaces(places);
+    } else {
+    }
+  };
+
 
   return (
     <>
@@ -139,6 +162,8 @@ const CustomerPage = () => {
             setPlaceNumberGlobal={setPlaceNumber}
             setView={setView}
             infoReserve={infoReserve}
+            parkingInfo={parkingInfo}
+            places={places}
           />
         )}
         {view === navigationNames.RESERVAR && (
@@ -148,6 +173,7 @@ const CustomerPage = () => {
             placeNumber={placeNumber}
             reserve={reserve}
             setView={setView}
+            dates={dates}
           />
         )}
         {view === navigationNames.INFORMACION && 

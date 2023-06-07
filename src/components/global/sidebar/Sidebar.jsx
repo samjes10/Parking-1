@@ -69,6 +69,11 @@ const Sidebar = ({ children }) => {
         name: "Reportes",
         icon: <HiOutlineDocumentReport />,
       },
+      {
+        path: "/mora",
+        name: "mora",
+        icon: <HiOutlineDocumentReport />,
+      },
   ];
   console.log(isOpen)
   return (

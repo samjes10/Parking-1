@@ -13,6 +13,8 @@ import ParkingRequest from "../../ParkingRequest/ParkingRequest";
 import Parking from "../../Parking/Parking";
 import Config from "../../config/Config";
 import Plazas from '../../../components/plaza/Plazas'
+import Reports from "../../reports/Reports";
+import Mora from "../../mora/Mora";
 function Private() {
   return (
     <Sidebar>
@@ -30,6 +32,8 @@ function Private() {
           <Route path="/parqueo" element={<Parking />} />
           <Route path="/config" element={<Config />} />     
           <Route path="/plazas" element={<Plazas/>} />     
+          <Route path="/reportes" element={<Reports/>} />     
+          <Route path="/mora" element={<Mora/>} />     
 
         </Routes>
       </Header>

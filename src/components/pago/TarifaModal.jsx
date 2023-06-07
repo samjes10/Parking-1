@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { InputGroup, Modal, Form } from "react-bootstrap"
+import { Toaster, toast } from "react-hot-toast";
 
 const initialState = {
     nombre: '',
@@ -17,14 +18,32 @@ const PayModal = ({ show, onHide, createPay, updatePay, productToEdit, setProduc
     },[show])
 
     const handleAcept = () => {
-        if(infoPay.id){
-            updatePay(infoPay);
-            onHide(false);
+        let res = isValid();
+        if(res === true){
+            if(infoPay.id){
+                updatePay(infoPay);
+                onHide(false);
+            }else{
+                createPay(infoPay)
+                onHide(false);
+                setInfoPay(initialState);
+            }
         }else{
-            createPay(infoPay)
-            onHide(false);
-            setInfoPay(initialState);
+            messageToastError(res);
         }
+    }
+    
+    const isValid = () => {
+        if(infoPay.nombre === ''){
+            return 'Nombre no debe estar en blanco.'
+        }
+        if(infoPay.costo === ''){
+            return 'Costo no debe estar en blanco.'
+        }
+        if(infoPay.estado === ''){
+            return 'Debe elegir un estado.'
+        }
+        return true;
     }
 
     const handleOnChange = (e) => {
@@ -36,6 +55,14 @@ const PayModal = ({ show, onHide, createPay, updatePay, productToEdit, setProduc
         setProductToEdit({});
         onHide(false);
     }
+    const messageToastSuccess = (sms) => {
+        toast.success(sms);
+      }
+    
+      const messageToastError = (sms) => {
+        toast.error(sms);
+      }
+    
 
     return <Modal show={show} centered>
         <Modal.Header>
@@ -79,6 +106,7 @@ const PayModal = ({ show, onHide, createPay, updatePay, productToEdit, setProduc
             <button className="btn-main btn-main__red" onClick={handleCancel}>Cancelar</button>
             <button className="btn-main btn-main__purple" onClick={handleAcept}>Aceptar</button>
         </Modal.Footer>
+        <Toaster position="top-right"/>
     </Modal>
 }
 

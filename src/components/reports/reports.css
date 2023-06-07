@@ -1,0 +1,19 @@
+.reports{
+    margin: 50px;
+}
+
+.report-header-seekers{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.report-header-seekers input{
+    border: 1px solid var(--colorSecundary);
+    border-radius: 10px;
+}
+.report-header-seekers select{
+    border: 1px solid var(--colorSecundary);
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+}

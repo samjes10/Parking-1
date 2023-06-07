@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Modal, Form } from "react-bootstrap"
+import { Toaster, toast } from "react-hot-toast";
 const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 
 const initialState = {
@@ -8,7 +9,7 @@ const initialState = {
   pago: "",
   comprobante: "",
   couta: false,
-  meses: 0,
+  meses: 1,
   cantidad: 0,
   allowFee: false,
   feeName: "",
@@ -61,11 +62,41 @@ const ModalNewReserve = ({show, onHide, tarifas, information, customers, dates, 
   };
 
   const handleReserve = () => {
-    let total = reserveInfo.meses * (reserveInfo.tarifa / 12).toFixed(0);
-    let totalPaid = total === 0 ? reserveInfo.tarifa : total
-    reserve({ ...reserveInfo, total: totalPaid, fechaFin: dateEnd });
+    let sms = isValid();
+    if(sms === true){
+      let total = 0;
+      if(reserveInfo.couta){
+        total = reserveInfo.meses * (reserveInfo.tarifa / 12).toFixed(0);
+      }else{
+        total = reserveInfo.tarifa;
+      }
+      reserve({ ...reserveInfo, total: total, fechaFin: dateEnd });
+    }else{
+      messageToastError(sms);
+    }
   };
 
+  const isValid = () => {
+    if(reserveInfo.tiempo === ''){
+      return 'Seleccione una tarifa'
+    }
+    if(reserveInfo.pago === ''){
+      return 'Seleccione una metodo de pago'
+    }
+    if(reserveInfo.couta && (reserveInfo.meses > 11 || reserveInfo.meses < 1)){
+      return 'Cantidad de meses no permitido'
+    }
+    if(reserveInfo.pago === payTypes.QR && reserveInfo.comprobante === ''){
+      return 'Debe agregar comprobante pago'
+    }
+    if(reserveInfo.idCustomer === 0){
+      return 'Elija un cliente'
+    }
+    return true;
+  }
+  const messageToastError = (sms) => {
+    toast.error(sms);
+  }
 
   /* Modificar la tarifa segun a la cantidad de tiempo */
   const handleOnChangeQuantity = (e) => {
@@ -194,7 +225,7 @@ const ModalNewReserve = ({show, onHide, tarifas, information, customers, dates, 
       </div>
   
       <div>
-        <p>Fecha Inicio: {fullDate.date} {fullDate.hour}</p>
+       {/*  <p>Fecha Inicio: {fullDate.date} {fullDate.hour}</p> */}
         <p>Fecha Fin: {calculateDateEnd()}</p>
       </div>
 
@@ -218,13 +249,15 @@ const ModalNewReserve = ({show, onHide, tarifas, information, customers, dates, 
                 Tiempo de un {reserveInfo.feeName}: coutas de Bs.{" "}
                 {(reserveInfo.tarifa / 12).toFixed(1)}/mes
               </p>
-              <p>Cuentos meses pagara?</p>
+              <p>Cuantos meses pagara?</p>
               <Form.Control
                 type="number"
                 placeholder="numero de meses (1-11)"
                 name="meses"
                 value={reserveInfo.meses}
                 onChange={handleOnChangeInput}
+                min={1}
+                max={11}
               />
               <p>
                 <span>
@@ -282,19 +315,21 @@ const ModalNewReserve = ({show, onHide, tarifas, information, customers, dates, 
         </div>
       </div>
 
-      <button className="btn-main btn-main__purple" onClick={handleReserve}>
-        Reservar
-      </button>{" "}
+     
+      </Modal.Body>
+      <Modal.Footer>
+   
       <button
-        className="btn-main btn-main__green"
+        className="btn-main btn-main__red"
         onClick={() => onHide(false)}
       >
         Cancelar
+      </button>  {" "}
+      <button className="btn-main btn-main__green" onClick={handleReserve}>
+        Reservar
       </button>
-      </Modal.Body>
-      <Modal.Footer>
-
       </Modal.Footer>
+      <Toaster/>
     </Modal>
   )
 }
