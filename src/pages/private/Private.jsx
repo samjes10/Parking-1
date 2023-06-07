@@ -13,6 +13,18 @@ import ParkingRequest from "../../components/ParkingRequest/ParkingRequest";
 import Parking from "../../components/Parking/Parking";
 import Config from "../../components/config/Config";
 import Plazas from '../../components/plaza/Plazas'
+import User from "../../user/User";
+import Customer from "../../customer/Customer";
+import Information from "../../information/Information";
+import Tarifa from "../../pago/Tarifa"
+import AssignTurn from "../../asignarturno/AssignTurn";
+import Claim from "../../claim/Claim";
+import ParkingRequest from "../../ParkingRequest/ParkingRequest";
+import Parking from "../../Parking/Parking";
+import Config from "../../config/Config";
+import Plazas from '../../../components/plaza/Plazas'
+import Reports from "../../reports/Reports";
+import Mora from "../../mora/Mora";
 function Private() {
   return (
     <Sidebar>
@@ -29,6 +41,8 @@ function Private() {
           <Route path="/parqueo" element={<Parking />} />
           <Route path="/config" element={<Config />} />     
           <Route path="/plazas" element={<Plazas/>} />     
+          <Route path="/reportes" element={<Reports/>} />     
+          <Route path="/mora" element={<Mora/>} />     
 
         </Routes>
       </Header>

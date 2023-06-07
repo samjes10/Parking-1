@@ -31,7 +31,7 @@ const TableParking = ({ placeInformation, setPlaceNumberGlobal, setView }) => {
               <td>{place.numero}</td>
               <td>{place.estado}</td>
               <td>
-                {place.estado === placeState.DISPONIBLE ? (
+                {place.estado === placeState.DISPONIBLE && place.habilitado === true ? (
                   <button className="btn-main btn-main__green" onClick={() => handleReserve(place)}>Reservar</button>
                 ) : (
                   <button className="btn-main btn-main__red">Resevado</button>

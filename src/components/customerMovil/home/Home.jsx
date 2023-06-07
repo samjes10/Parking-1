@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import Seeker from "./Seeker";
 import TableParking from "./TableParking";
 import { APISERVICE } from "../../../services/api.service";
+import PlaceGrilla from "./PlaceGrilla";
 
-const APIURLIMG = "http://localhost:8080/upload/";
-
-const HomeCustomer = ({ information, setPlaceNumberGlobal, setView, infoReserve }) => {
+const HomeCustomer = ({ information, setPlaceNumberGlobal, setView, infoReserve, parkingInfo, places }) => {
   const [placeNumber, setPlaceNumber] = useState("");
   const [placeInformation, setPlaceInformation] = useState({});
 
@@ -36,10 +35,8 @@ const HomeCustomer = ({ information, setPlaceNumberGlobal, setView, infoReserve 
 
   return (
     <section className="home">
-      <h5>Imagen de Parqueo</h5>
-      <div className="home-img">
-        <img src={`${APIURLIMG}${information.foto}`} alt="foto parqueo" />
-      </div>
+      <h5>Parqueo</h5>
+      <PlaceGrilla parkingInfo={parkingInfo} places={places}/>
 
       {Object.keys(infoReserve).length === 0 && searchPlaza}
     </section>

@@ -2,6 +2,7 @@ import { InputGroup, Form } from "react-bootstrap";
 import "./information.css";
 import { useEffect, useState } from "react";
 import { APISERVICE } from "../../services/api.service";
+import { Toaster, toast } from "react-hot-toast";
 
 const initialState = {
   convocatoria: "",
@@ -31,11 +32,6 @@ const Information = () => {
         }
     }
 
-    const formatDate = ( dates ) => {
-      return 
-
-    }
-
 
   const handleOnChangeFile = (e) => {
     setInformation({ ...information, [e.target.name]: e.target.files[0] });
@@ -46,7 +42,8 @@ const Information = () => {
   };
 
   const handleUpdate = async () => {
-    if (isValid()) {
+    let sms = isValid();
+    if (sms === true) {
       const {foto, qr, convocatoria, fecha_inicio_reserva, fecha_limite_reserva, fecha_pub_conv, mensaje_mora, atencion, fecha_fin_reserva} = information;
       const url = "informacion/update-information";
       const body = new FormData();
@@ -64,13 +61,59 @@ const Information = () => {
       body.append("imgQr", qr);
       body.append("imgConvocatoria", convocatoria);
       body.append("imgParking", foto);
-      const response = await APISERVICE.postWithImage(body, url);
-      console.log(response);
+      const {success, message} = await APISERVICE.postWithImage(body, url);
+      if(success){
+        messageToastSuccess(message);
+      }else{
+        messageToastError(message)
+      }
+    }else{
+       messageToastError(sms)
     }
   };
 
   const isValid = () => {
+    const {fecha_inicio_reserva, fecha_limite_reserva, fecha_pub_conv,fecha_fin_reserva, qr} = information;
+    const date = new Date();
+    const month = date.getMonth() + 1 > 9 ?  date.getMonth() + 1: '0'+(date.getMonth() + 1);
+    const day  = date.getDate() > 9 ?  date.getDate() : "0" + date.getDate() 
+    const dateCurrently = `${date.getFullYear()}-${month}-${day}`
+    if(qr === ""){
+      return 'Foto Qr no debe estar en blanco' 
+    }
+    if(fecha_fin_reserva === ''){
+      return 'Fecha fin reserve no debe estar en blanco' 
+    }
+    if(fecha_inicio_reserva === ''){
+      return 'Fecha inicio reserve no debe estar en blanco' 
+    }
+    if(fecha_limite_reserva === ''){
+      return 'Fecha limite reserve no debe estar en blanco' 
+    }
+    if(fecha_pub_conv === ''){
+      return 'Fecha Inicio de pagos no debe estar en blanco' 
+    }
+    if(fecha_pub_conv < dateCurrently ||  fecha_pub_conv > fecha_limite_reserva || fecha_pub_conv > fecha_inicio_reserva || fecha_pub_conv > fecha_fin_reserva){
+      return 'Revise las fechas'
+    }
+    if(fecha_limite_reserva < dateCurrently ||  fecha_limite_reserva < fecha_pub_conv  || fecha_limite_reserva > fecha_inicio_reserva || fecha_limite_reserva > fecha_fin_reserva){
+      return 'Revise las fechas'
+    }
+    if(fecha_inicio_reserva < dateCurrently || fecha_inicio_reserva < fecha_pub_conv || fecha_inicio_reserva < fecha_limite_reserva || fecha_inicio_reserva > fecha_fin_reserva){
+      return 'Revise las fechas'
+    }
+    if(fecha_fin_reserva < dateCurrently || fecha_fin_reserva < fecha_pub_conv || fecha_fin_reserva < fecha_limite_reserva || fecha_fin_reserva < fecha_inicio_reserva){
+      return 'Revise las fechas'
+    }
     return true;
+  }
+
+  const messageToastSuccess = (sms) => {
+    toast.success(sms);
+  }
+
+  const messageToastError = (sms) => {
+    toast.error(sms);
   }
 
   return (
@@ -102,7 +145,7 @@ const Information = () => {
             name="qr"
           />
         </InputGroup>
-
+{/* 
         <InputGroup>
           <label className="information__form-label" htmlFor="foto">
             Foto de parqueo
@@ -110,15 +153,15 @@ const Information = () => {
           <Form.Control
             type="file"
             id="foto"
-            /* value={information.foto} */
+          
             onChange={handleOnChangeFile}
             name="foto"
           />
-        </InputGroup>
+        </InputGroup> */}
 
         <InputGroup>
           <label className="information__form-label" htmlFor="fecha_pub_conv">
-            Fecha Publicacion
+            Fecha Inicio de Pagos
           </label>
           <Form.Control
             type="date"
@@ -163,7 +206,7 @@ const Information = () => {
             className="information__form-label"
             htmlFor="fecha_fin_reserva"
           >
-            Fecha Inicio Reserva
+            Fecha Fin Reserva
           </label>
           <Form.Control
             type="date"
@@ -204,6 +247,7 @@ const Information = () => {
       <button className="btn-main btn-main__purple" onClick={handleUpdate}>
         Guardar
       </button>
+      <Toaster position="top-right"/>
     </section>
   );
 };

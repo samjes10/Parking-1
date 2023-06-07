@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Form } from "react-bootstrap";
-import ReserveInfo from "../reserveInfo/ReserveInfo";
 import { navigationNames } from "../CustomerPage";
-const APIURLIMG = "http://localhost:8080/upload/";
+import { Toaster, toast } from "react-hot-toast";
+const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 export const payTypes = {
   EFECTIVO: "efectivo",
   QR: "qr",
@@ -14,13 +14,14 @@ const initialState = {
   pago: "",
   comprobante: "",
   couta: false,
-  meses: 0,
+  meses: 1,
   cantidad: 0,
   allowFee: false,
   feeName: "",
 };
+let dateEnd = '';
 
-const Reserve = ({ tarifas, information, placeNumber, reserve, setView }) => {
+const Reserve = ({ tarifas, information, placeNumber, reserve, setView, dates }) => {
   const [reserveInfo, setReserveInfo] = useState(initialState);
 
   const handleOnChange = (e) => {
@@ -45,11 +46,82 @@ const Reserve = ({ tarifas, information, placeNumber, reserve, setView }) => {
   };
 
   const handleReserve = () => {
-    let total = reserveInfo.meses * (reserveInfo.tarifa / 12).toFixed(0);
-    let totalPaid = total === 0 ? reserveInfo.tarifa : total
-    reserve({ ...reserveInfo, total: totalPaid });
+    let sms = isValid();
+    if(sms === true){
+      const dateEnd = calculateDateEnd();
+      let total = 0;
+      if(reserveInfo.couta){
+        total = reserveInfo.meses * (reserveInfo.tarifa / 12).toFixed(0);
+      }else{
+        total = reserveInfo.tarifa;
+      }
+      reserve({ ...reserveInfo, total: total, dateEnd: dateEnd});
+    }else{
+      messageToastError(sms);
+    }
   };
+  const calculateDateEnd = () => {
+    const dateCurrently = new Date();
+    const day = dateCurrently.getDate(); 
+    const month = dateCurrently.getMonth(); 
+    const year = dateCurrently.getFullYear(); 
+    const minute = dateCurrently.getMinutes();
+    const hour = dateCurrently.getHours();
+    const seconds = dateCurrently.getSeconds();
+    let newHour = 0;
+    let newDate = `${year}-${month + 1}-${day}`
+    let newDay = 0;
+    let newMonth = 0;
+    if(reserveInfo.feeName === 'hora'){
+      newHour = hour + Number(reserveInfo.cantidad);
+      if(newHour > 23){
+        newHour = hour + Number(reserveInfo.cantidad) - 24;
+        newDate = `${year}-${month + 1}-${day+ 1}`
+      }
+      dateEnd =  `${newDate} ${newHour}:${minute}:${seconds}`
+    }
+    if(reserveInfo.feeName === 'dia'){
+      newDay = day + Number(reserveInfo.cantidad - 1);
+      if(newDay> 31){
+        newDay = day + Number(reserveInfo.cantidad - 1) - 31;
+      }
+      dateEnd =  `${year}-${month+ 1}-${newDay} 22:00:00`
+    }
+    if(reserveInfo.feeName === 'mes'){
+      newMonth = month + 1 + Number(reserveInfo.cantidad);
+      if(newMonth > 12){
+        newMonth = month + 1 + Number(reserveInfo.cantidad) - 12;
+      }
+      dateEnd =  `${year}-${newMonth}-${day} 22:00:00`
+    }
+    if(reserveInfo.feeName === 'año'){
+      dateEnd = dates.fecha_fin_reserva;
+    }
+  /*   setReserveInfo({
+      ...reserveInfo,
+      'fechaFin': dateEnd,
+    }); */
+    return dateEnd;
+  }
+  const isValid = () => {
+    if(reserveInfo.tiempo === ''){
+      return 'Seleccione una tarifa'
+    }
+    if(reserveInfo.pago === ''){
+      return 'Seleccione una metodo de pago'
+    }
+    if(reserveInfo.couta && (reserveInfo.meses > 11 || reserveInfo.meses < 1)){
+      return 'Cantidad de meses no permitido'
+    }
+    if(reserveInfo.pago === payTypes.QR && reserveInfo.comprobante === ''){
+      return 'Debe agregar comprobante pago'
+    }
+    return true;
+  }
 
+  const messageToastError = (sms) => {
+    toast.error(sms);
+  }
   const handleOnChangeFile = (e) => {
     setReserveInfo({ ...reserveInfo, [e.target.name]: e.target.files[0] });
   };
@@ -69,22 +141,25 @@ const Reserve = ({ tarifas, information, placeNumber, reserve, setView }) => {
   };
   /* Modificar la tarifa segun a la cantidad de tiempo */
   const handleOnChangeQuantity = (e) => {
-    let tarifa = tarifas.find((tar) => tar.id == reserveInfo.tiempo);
-    setReserveInfo({
-      ...reserveInfo,
-      [e.target.name]: e.target.value,
-      tarifa: e.target.value * tarifa.costo,
-    });
+    if(reserveInfo.tiempo !== ''){  
+      let tarifa = tarifas.find((tar) => tar.id == reserveInfo.tiempo);
+      setReserveInfo({
+        ...reserveInfo,
+        [e.target.name]: e.target.value,
+        tarifa: e.target.value * tarifa.costo,
+      });
+    }
   };
 
   return (
-    <section>
+    <section className="section">
       <h5>Reservar</h5>
       <div className="reserve-header">
         <Form.Control
           type="number"
           value={reserveInfo.cantidad}
           name="cantidad"
+          min={1}
           onChange={handleOnChangeQuantity}
         />
 
@@ -135,11 +210,13 @@ const Reserve = ({ tarifas, information, placeNumber, reserve, setView }) => {
                 Tiempo de un {reserveInfo.feeName}: coutas de Bs.{" "}
                 {(reserveInfo.tarifa / 12).toFixed(1)}/mes
               </p>
-              <p>Cuentos meses pagara?</p>
+              <p>Cuantos meses pagara?</p>
               <Form.Control
                 type="number"
                 placeholder="numero de meses (1-11)"
                 name="meses"
+                min={1}
+                max={11}
                 value={reserveInfo.meses}
                 onChange={handleOnChangeInput}
               />
@@ -196,6 +273,7 @@ const Reserve = ({ tarifas, information, placeNumber, reserve, setView }) => {
       >
         Volver
       </button>
+      <Toaster/>
     </section>
   );
 };

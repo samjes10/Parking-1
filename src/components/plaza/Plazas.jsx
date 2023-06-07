@@ -37,11 +37,11 @@ const Plazas = () => {
   };
 
   const getCustomers = async (page = 1) => {
-    let url = "cliente/?";
+    let url = "cliente/get-customers?";
     let params = `page=${page}`;
-    const {success, pageInfo} = await APISERVICE.get(url, params);
+    const {success, customers} = await APISERVICE.get(url, params);
     if (success) {
-      setCustomers(pageInfo.customers);
+      setCustomers(customers);
     }
   };
   const getPlaces = async () => {

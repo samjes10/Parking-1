@@ -1,7 +1,8 @@
 import { Form } from "react-bootstrap";
 import { navigationNames } from "../CustomerPage";
 import { useState } from "react";
-const APIURLIMG = "http://localhost:8080/upload/";
+import { Toaster, toast } from "react-hot-toast";
+const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 const stateReserve = {
   CANCELADO: "cancelado",
   PENDIENTE: "pendiente",
@@ -18,7 +19,7 @@ const initialState = {
 const ReserveInfo = ({ infoReserve, setView, information, payFee }) => {
   const [showCompletePayment, setShowCompletePayment] = useState(false);
   const [infoPayment, setInfoPayment] = useState(initialState);
-  const [showQr, setShowQr] = useState(false);
+  const [showQr, setShowQr] = useState('');
 
   const notExistReserve = (
     <>
@@ -49,10 +50,31 @@ const ReserveInfo = ({ infoReserve, setView, information, payFee }) => {
 
   const handleOnChangeFile = (e) => {
     setInfoPayment({ ...infoPayment, [e.target.name]: e.target.files[0] });
-  };console.log(infoPayment)
+  };
 
   const handleSendPayment = () => {
-    payFee(infoPayment, infoReserve.id, showQr)
+    let sms = isValid();
+    if(sms === true){
+      payFee(infoPayment, infoReserve.id, showQr)
+      setView(navigationNames.HOME)
+    }else{
+      messageToastError(sms);
+    }
+  }
+  const isValid = () => {
+    if(infoPayment.nroMeses > 11 || infoPayment.nroMeses < 1 ){
+      return 'Numero de meses incorrecto.'
+    }
+    if(showQr === ''){
+      return 'Elija un metodo de pago.'
+    }
+    if(showQr && infoPayment.comprobante === ''){
+      return 'Debe agregar comprobante pago'
+    }
+    return true;
+  }
+  const messageToastError = (sms) => {
+    toast.error(sms);
   }
 
   const handleOnChange = (e) => {
@@ -127,7 +149,7 @@ const ReserveInfo = ({ infoReserve, setView, information, payFee }) => {
               {showCompletePayment && (
                 <div className="payment-fee">
                   <label htmlFor="">Escriba el nro de meses que pagara</label>
-                  <Form.Control type="number" name="nroMeses" value={infoPayment.nroMeses} onChange={handleOnChange}/>
+                  <Form.Control type="number" name="nroMeses" value={infoPayment.nroMeses} onChange={handleOnChange} min={1}  max={11}/>
                   <label htmlFor="">Total</label>
                   <Form.Control type="text" name="total" value={infoPayment.total} readOnly />
 
@@ -176,6 +198,7 @@ const ReserveInfo = ({ infoReserve, setView, information, payFee }) => {
       ) : (
         <>{notExistReserve}</>
       )}
+      <Toaster/>
     </div>
   );
 };

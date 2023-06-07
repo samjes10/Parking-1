@@ -14,6 +14,7 @@ const TablePayments = ({ requestToReserve , setShowModal, setPayment, setShowReq
 
   const handleConfirm = (pay) => {
     confirmPayment(pay);
+    setShowRequests(true);
   }
   return (
     <>
