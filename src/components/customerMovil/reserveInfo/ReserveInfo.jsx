@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import { navigationNames } from "../CustomerPage";
 import { useState } from "react";
-const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
+const APIURLIMG = "http://localhost:8080/upload/";
 const stateReserve = {
   CANCELADO: "cancelado",
   PENDIENTE: "pendiente",

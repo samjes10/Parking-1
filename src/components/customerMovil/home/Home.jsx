@@ -3,7 +3,7 @@ import Seeker from "./Seeker";
 import TableParking from "./TableParking";
 import { APISERVICE } from "../../../services/api.service";
 
-const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
+const APIURLIMG = "http://localhost:8080/upload/";
 
 const HomeCustomer = ({ information, setPlaceNumberGlobal, setView, infoReserve }) => {
   const [placeNumber, setPlaceNumber] = useState("");

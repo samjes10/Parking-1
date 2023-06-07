@@ -4,15 +4,21 @@
     box-sizing: border-box;
 }
 
-.bg-img {
+.login-container{
     /*background: url(https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg);*/
-    background-image: url("../../../../assets/fondoCars2.gif");
+    background-image: url("../../../assets/fondoCars2.gif");
     height: 100vh;
     width: 100vw;
     background-size: cover;
     background-position: center;
 }
-
+.signout-container{
+    /*background: url(https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg);*/
+    background-image: url("../../../assets/fondoCars2.gif");
+    height: 140vh;
+    background-size: cover;
+    background-position: center;
+}
 .bg-img::after {
     position: absolute;
     content: '';
@@ -21,7 +27,7 @@
     background: rgba(0, 0, 0, 0.4);
 }
 
-.content {
+.content-login {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -34,8 +40,23 @@
     background: rgba(255, 255, 255, 0.04);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
 }
+.content-signout {
+    margin-top: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 370px;
+    text-align: start;
+    padding: 30px 32px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
 
-.content header {
+
+.title {
     color: #fff;
     font-size: 33px;
     font-weight: 600;

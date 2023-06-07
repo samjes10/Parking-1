@@ -1,24 +1,23 @@
 import { Navigate, Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
-import Sidebar from "../../global/sidebar/Sidebar";
-import Header from "../../global/header/Header";
+import Sidebar from "../../components/global/sidebar/Sidebar";
+import Header from "../../components/global/header/Header";
 import Dashboard from "../Dashboard";
-import User from "../../user/User";
-import Customer from "../../customer/Customer";
-import Information from "../../information/Information";
-import Tarifa from "../../pago/Tarifa"
-import AssignTurn from "../../asignarturno/AssignTurn";
-import Claim from "../../claim/Claim";
-import ParkingRequest from "../../ParkingRequest/ParkingRequest";
-import Parking from "../../Parking/Parking";
-import Config from "../../config/Config";
-import Plazas from '../../../components/plaza/Plazas'
+import User from "../../components/user/User";
+import Customer from "../../components/customer/Customer";
+import Information from "../../components/information/Information";
+import Tarifa from "../../components/pago/Tarifa"
+import AssignTurn from "../../components/asignarturno/AssignTurn";
+import Claim from "../../components/claim/Claim";
+import ParkingRequest from "../../components/ParkingRequest/ParkingRequest";
+import Parking from "../../components/Parking/Parking";
+import Config from "../../components/config/Config";
+import Plazas from '../../components/plaza/Plazas'
 function Private() {
   return (
     <Sidebar>
       <Header>
         <Routes>
-          <Route path="/" element={<Navigate to="/" />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/usuarios" element={<User />} />
           <Route path="/customers" element={<Customer />} />

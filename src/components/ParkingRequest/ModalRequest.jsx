@@ -1,5 +1,5 @@
 import { Modal } from "react-bootstrap";
-const APIULRIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
+const APIULRIMG = "http://localhost:8080/upload/";
 const ModalRequest = ({ show, payment, onHide }) => {
 
   return (

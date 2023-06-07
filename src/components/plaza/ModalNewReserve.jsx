@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Modal, Form } from "react-bootstrap"
-const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
+const APIURLIMG = "http://localhost:8080/upload/";
 
 const initialState = {
   tarifa: 0,

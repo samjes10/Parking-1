@@ -20,6 +20,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-file-download:
+    specifier: ^0.3.5
+    version: 0.3.5
   react-hot-toast:
     specifier: ^2.4.1
     version: 2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
@@ -1892,6 +1895,11 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-file-download@0.3.5:
+    resolution: {integrity: sha512-gP867caQCviTw2IUQTMTOFgHn2A71zoLYzHr4KkOI0gkwc1m4ceb/dxNOkG4yB8Hent2+G3f4qbr9Rzb9yZouw==}
+    deprecated: 'WARNING: This project has been renamed to js-file-download. Use js-file-download instead.'
     dev: false
 
   /react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0):

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import ReserveInfo from "../reserveInfo/ReserveInfo";
 import { navigationNames } from "../CustomerPage";
-const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
+const APIURLIMG = "http://localhost:8080/upload/";
 export const payTypes = {
   EFECTIVO: "efectivo",
   QR: "qr",
