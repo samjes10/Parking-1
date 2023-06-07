@@ -6,6 +6,7 @@ export default function UserModal({ show, onHide, createPlaza, plazaUpdate, setP
   const initialValues = {
     numero: "",
     habilitado: "",
+    estado:""
   };
   console.log(plazaUpdate.id);
   const [value, setValue] = useState(initialValues);
@@ -15,11 +16,13 @@ export default function UserModal({ show, onHide, createPlaza, plazaUpdate, setP
         setValue({
             ...value,
             [e.target.name]: false,
+            'estado':"camino"
           });
     }else if(e.target.value === "plaza"){
         setValue({
             ...value,
             [e.target.name]: true,
+            'estado':"disponible"
           });
     }else{
         setValue({
