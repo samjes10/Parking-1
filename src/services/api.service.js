@@ -1,4 +1,4 @@
-const APIURL =  'http://localhost:8080/';
+const APIURL= import.meta.env.VITE_REACT_APP_API_URL;
 let token = '';
 function getToken ( ) {
   const tokenLocal = JSON.parse(localStorage.getItem('user'));

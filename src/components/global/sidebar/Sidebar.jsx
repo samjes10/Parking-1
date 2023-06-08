@@ -8,7 +8,7 @@ import { BsInfoSquareFill,BsExclamationCircleFill } from "react-icons/bs";
 import { GiDiscussion} from "react-icons/gi"
 import {TbParking} from "react-icons/tb"
 import { NavLink } from "react-router-dom";
-import "./styles/Sidebar.css";
+//import "./styles/Sidebar.css";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ParkingRequestTable from "./ParkingRequestTable";
 import { APISERVICE } from "../../services/api.service";
-import "./parkingRequest.css";
+//import "./parkingRequest.css";
 import ModalRequest from "./ModalRequest";
 import { Toaster, toast } from "react-hot-toast";
 import TablePayments from "./TablePayments";

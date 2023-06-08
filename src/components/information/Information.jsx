@@ -1,5 +1,5 @@
 import { InputGroup, Form } from "react-bootstrap";
-import "./information.css";
+//import "./information.css";
 import { useEffect, useState } from "react";
 import { APISERVICE } from "../../services/api.service";
 import { Toaster, toast } from "react-hot-toast";

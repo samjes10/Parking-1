@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { createUser, resetUser } from "../../redux/state/user";
 import { useEffect } from "react";
 
-import "./styles/Login.css";
 export default function Login() {
   const [user, setFormData] = useState({
     email: "",
@@ -40,9 +39,9 @@ export default function Login() {
       setError(<p style={{ textAlign: "center", color: "red" }}>*Error de Usuario o Contraseña </p>);
     }
   };
-  const clearLocalStorage = (key) => {
-    localStorage.removeItem(key);
-  };
+const handletoRegister=()=>{
+  navigate('/registro')
+}
   useEffect(() => {
     dispatch(resetUser());
   }, []);
@@ -53,12 +52,12 @@ export default function Login() {
         <div className="content-login">
           <h3 className="title">Bienvenidos al Sistema de Parking</h3>
           <form onSubmit={handleSubmit}>
-            <div className="field">
-              <span className="fa fa-lock"></span>
+            <div className=" mb-3">
+
               <input
                 id="email"
                 type="email"
-                className=""
+                className="form-control"
                 name="email"
                 placeholder="Introdusca su correo"
                 value={user.email}
@@ -67,35 +66,28 @@ export default function Login() {
               />
               <div className="invalid-feedback">{}</div>
             </div>
-            <div className="field space">
-              <span className="fa fa-lock"></span>
+            <div className=" mb-3">
               <input
                 id="password"
                 type="password"
                 value={user.password}
                 onChange={handleInputChange}
                 placeholder="Introdusca su contraseña"
-                className=""
+                className="form-control"
                 name="password"
                 required
               />
-              <div className="invalid-feedback">{}</div>
-            </div>
-
-            <div className="form-group">
-              <div className="custom-control custom-checkbox"></div>
             </div>
             <div style={{textAlign:"center"}} className="form-group mt-3">
               <button  type="submit" className="btn btn-primary ">
                 INICIAR SESION
               </button>
             </div>
-
-            <div className="signup">
-              Eres nuevo?
-              <a href="/registrarse">Crear cuenta</a>
-            </div>
           </form>
+          <div className="signup">
+              Eres nuevo?
+              <button className="btn-green" onClick={()=>handletoRegister()}>Crear cuenta</button>
+            </div>
         </div>
       </div>
     </div>

@@ -4,7 +4,6 @@ import { APISERVICE } from "../../services/api.service";
 import { useDispatch } from "react-redux";
 import { createUser, resetUser } from "../../redux/state/user";
 import { useEffect } from "react";
-import "./styles/Login.css"
 import PublicHeader from "../../components/global/header/PublicHeader";
 export default function Login() {
     const initialValues = {
@@ -44,6 +43,9 @@ export default function Login() {
       
     }
   };
+  const handletoLogin=()=>{
+    navigate("/login")
+  }
   useEffect(() => {
 
   }, []);
@@ -96,7 +98,7 @@ export default function Login() {
 
             <div className="signup">
               Ya tienes cueta?
-              <a href="/login">Iniciar Sesion</a>
+              <button className="btn-green" onClick={()=>handletoLogin()}>Iniciar Sesion</button>
             </div>
             </form>
         </div>

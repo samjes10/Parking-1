@@ -1,5 +1,5 @@
 import { Table } from 'react-bootstrap'
-import './mora.css'
+//import './mora.css'
 import { APISERVICE } from '../../services/api.service';
 import { useEffect, useState } from 'react';
 const Mora = () => {

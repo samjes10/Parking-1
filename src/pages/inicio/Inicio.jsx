@@ -1,5 +1,5 @@
 import PublicHeader from "../../components/global/header/PublicHeader";
-import "./Inicio.css"
+//import "./Inicio.css"
 export default function Inicio() {
   return (
     <div >

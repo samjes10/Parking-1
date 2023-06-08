@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import GridParking from "./GridParking";
 import { APISERVICE } from "../../services/api.service";
 import Modal from "./Modal";
-import "./styles/Config.css";
+//import "./styles/Config.css";
 
 export default function Config() {
   const [modalShow, setModalShow] = useState(false);

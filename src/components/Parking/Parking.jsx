@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ParkingTable from "./ParkingTable";
 import { APISERVICE } from "../../services/api.service";
 import ParkingModal from "./ParkingModal";
-import './styles/Parking.css'
+//import './styles/Parking.css'
 
 export default function Parking() {
   const [parkins, setParkins] = useState([]);

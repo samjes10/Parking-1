@@ -1,4 +1,4 @@
-import './reports.css'
+//import './reports.css'
 import Seeker from './Seeker'
 import { ReportsTable } from './ReportsTable'
 import {APISERVICE} from '../../services/api.service'

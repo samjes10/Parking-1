@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CustomerTable from "./CustomerTable";
 import { APISERVICE } from "../../services/api.service";
-import "../customer/styles/Customer.css";
+//import "../customer/styles/Customer.css";
 import CustomerModal from "./CustomerModal";
 
 export default function Customer() {
