@@ -1,0 +1,20 @@
+.convocatoria{
+    
+    padding: 20px;
+    width: 80%;
+    display: flex;
+    margin: 5% auto;
+    background-color: rgb(212, 200, 200);
+    gap: 2%;
+    border-radius: 10px;
+
+}
+.img-conv{
+    width: 40%;
+}
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,37 @@
+.paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .page-link {
+    display: inline-block;
+    padding: 7px;
+    margin: 5px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #555;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .page-link:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .page-link.active {
+    background-color: #6372E7;
+    color: #fff;
+  }
+  
+  .page-link:first-child {
+    margin-left: 0;
+  }
+  
+  .page-link:last-child {
+    margin-right: 0;
+  }
+  

@@ -1,0 +1,7 @@
+.container-inicio{
+    background-image: url("../../assets/fondoCars3.jpg");
+    height: 90vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}

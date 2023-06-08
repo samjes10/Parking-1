@@ -1,0 +1,66 @@
+:root{
+    --colorMain: #6372E7;
+    --colorWhite:#ffffff;
+    --colorRed:#e25959;
+}
+.container-customer{
+    width: 95%;
+    margin: 0 auto;
+}
+.color-main{
+    color: var(--colorMain);
+}
+.head-table{
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+
+}
+
+.btn-bloquear{
+    border: none;
+    background-color:var(--colorRed);
+    border-radius: 7px;
+    color: var(--colorWhite);
+    width: 50%;
+    
+}
+.btn-bloquear:hover{
+    background-color:  #b61313;
+}
+@media screen and (max-width: 700px) {
+    .btn-bloquear {
+        width: 40%;
+        padding: 6px 2px ;
+        font-size: 6px;
+    }
+}
+.btn-activar{
+    border: none;
+    background-color:var(--colorMain);
+    border-radius: 7px;
+    color: var(--colorWhite);
+    width: 50%;
+    
+}
+.icon{
+    font-size: 15px;
+    color: #6372E7;
+}
+.btn-customer{
+    background-color: var(--colorWhite);
+    border: none;
+}
+.img-customer{
+    max-width: 60%;
+    height: auto;
+}
+.btn-activar:hover{
+    background-color:#2536b4 ;
+}
+@media screen and (max-width: 700px) {
+    .btn-activar {
+      width: 40%;
+      padding: 6px 2px ;
+      font-size: 6px;
+    }
+}

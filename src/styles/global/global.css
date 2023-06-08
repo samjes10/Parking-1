@@ -1,0 +1,486 @@
+:root{
+    --colorMain: #6372E7;
+    --colorWhite:#ffffff;
+    --colorRed: #e21212;
+    --colorBlack:#020202;
+    --colorGreen:#00a758;
+}
+.bg-color-red{
+    background-color: var(--colorRed);
+}
+.bg-color-main{
+    background-color: var(--colorMain);
+}
+.color-main{
+    color: var(--colorMain);
+}
+.btn-global{
+    border: none;
+    border-radius: 10px;
+    padding: 0px 10px;
+}
+.tc-white{
+    color:#ffffff;
+}
+ .btn-main{
+        border: none;
+        padding: 5px 15px;
+        border-radius: 10px;
+    }
+    .btn-main__purple{
+        color: var(--colorWhite);
+        background-color: var(--colorMain);
+    }
+    .btn-main__green{
+        color: var(--colorWhite);
+        background-color: var(--colorGreen);
+    }
+    .btn-main__red{
+        color: var(--colorWhite);
+        background-color: var(--colorRed);
+    }
+    .icon, .link_text{
+        font-size: 18px;
+        color: #6372E7;
+    }
+ /*login and register*/
+ .login-container{
+    background-image: url("../../assets/fondoCars2.gif");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+.signout-container{
+    background-image: url("../../assets/fondoCars2.gif");
+    height: 140vh;
+    background-size: cover;
+    background-position: center;
+}
+.btn-green{
+    border: none;
+    background: none;
+    color: #37ff00;
+}
+
+
+.content-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 999;
+    width: 370px;
+    text-align: center;
+    padding: 60px 32px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+}
+.content-signout {
+    margin-top: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 370px;
+    text-align: start;
+    padding: 30px 32px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+
+
+.title {
+    color: #fff;
+    font-size: 33px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login {
+    color: #fff;
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+}
+.signup {
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+/*sidebar*/
+.sidebar-container{
+    display:flex;  
+    
+}
+main{
+    width: 100%;
+}
+.sidebar{
+    background: #fff;
+    color: #fff;
+    height: 100vh;
+    width: 200px;
+    transition: all 0.5s;
+}
+.top_section{
+    display: flex;
+    align-items:center;
+    height: 10vh;
+    padding:12px 15px;
+
+}
+.logo{
+    
+    padding:10px 30px 10px 30px;
+    height: 10vh;
+    width: 100%;
+    
+}
+.bars{
+    display: flex;
+    font-size: 25px;
+    margin-left: 10px;
+
+}
+.link{
+    text-decoration: none;
+    display: flex;
+    color: #fff;
+    padding: 5px 0px 5px 20px;
+    gap: 15px;
+    transition: all 0.5s;
+}
+
+.link:hover{
+    background:lightskyblue;
+    color: #000;
+    transition: all 0.5s;
+}
+.active{
+    background: lightskyblue;
+    color: #000;
+}
+.icon, .link_text{
+    font-size: 18px;
+    color: #6372E7;
+}
+/*component informacion*/
+.information{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.information h3{
+    color: var(--colorMain);
+}
+
+.information__form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    place-items: center;
+    margin: 15px 0px;
+}
+
+.information__form-label{
+    width: 100%;
+    margin: 10px 0px;
+}   
+/*component client o customer*/
+
+.container-customer{
+    width: 95%;
+    margin: 0 auto;
+}
+.color-main{
+    color: var(--colorMain);
+}
+.head-table{
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+
+}
+
+.btn-bloquear{
+    border: none;
+    background-color:var(--colorRed);
+    border-radius: 7px;
+    color: var(--colorWhite);
+    width: 50%;
+    
+}
+.btn-bloquear:hover{
+    background-color:  #b61313;
+}
+@media screen and (max-width: 700px) {
+    .btn-bloquear {
+        width: 40%;
+        padding: 6px 2px ;
+        font-size: 6px;
+    }
+}
+.btn-activar{
+    border: none;
+    background-color:var(--colorMain);
+    border-radius: 7px;
+    color: var(--colorWhite);
+    width: 50%;
+    
+}
+.icon{
+    font-size: 15px;
+    color: #6372E7;
+}
+.btn-customer{
+    background-color: var(--colorWhite);
+    border: none;
+}
+.img-customer{
+    max-width: 60%;
+    height: auto;
+}
+.btn-activar:hover{
+    background-color:#2536b4 ;
+}
+@media screen and (max-width: 700px) {
+    .btn-activar {
+      width: 40%;
+      padding: 6px 2px ;
+      font-size: 6px;
+    }
+}
+/*tarifa*/
+.tarifa > button{
+    margin: 15px 0px;    
+}
+.tarifa > h3{
+    color: var(--colorMain);
+    margin: 10px 0 0 0;
+}
+.table-head{
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+}
+/*inicio*/
+.container-inicio{
+    background-image: url("../../assets/fondoCars3.jpg");
+    height: 90vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+/*parking request solicitud*/
+.parking-request{
+    margin: 30px;
+}
+
+.modal-img{
+    max-width: 300px;
+    margin: 0 auto;
+}
+.modal-img img{
+    width: 100%;
+}
+
+/* Parking */
+.reserve-coutas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0px;
+}
+.reserve-coutas p{
+    margin: 0;
+}
+
+.reserve-coutas-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.reserve-coutas span{
+    font-weight: 600;
+}
+.modal-body p{
+    margin: 2px 0px;
+}
+
+/*parking*/
+.container-user{
+    width: 95%;
+    margin: 0 auto;
+}
+.color-main{
+    color: var(--colorMain);
+}
+.head-table{
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+
+}
+.btn-user{
+    background-color: var(--colorWhite);
+    border: none;
+}
+.img-user{
+    max-width: 60%;
+    height: auto;
+}
+.btn-nuevo{
+    border: none;
+    background-color:var(--colorMain);
+    border-radius: 7px;
+    color: var(--colorWhite);
+    width: 8%;
+    
+}
+.btn-nuevo:hover{
+    background-color: #2536b4;
+}
+/*plazas*/
+.parking{
+    margin: 30px;
+}
+.parking-grilla{
+    background-color: rgb(163, 163, 163);
+    display: grid;
+    place-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.place{
+    width: 100%;
+    min-height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.place p{
+    margin: 0;
+}
+.place-available{
+    background-color: var(--colorGreen);
+}   
+.place-disabled{
+    background-color: var(--colorRed);
+}
+.place-road{
+    background-color: orange;
+}
+.place-request{
+    background-color: var(--colorMain);
+}
+
+/*config*/
+
+.color-main{
+    color: var(--colorMain);
+}
+.grid-container {
+    background-color: var(--colorMain);
+    display: grid;
+    place-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .card {
+    border-radius: 4px;
+    height: 50px;
+    width: 70%;
+  }
+ 
+.btn-card{
+    border: none;
+    background-color: var(--colorWhite);
+
+}
+
+.icon-path{
+  font-size: 80px;
+  background-color: #6372E7;
+
+}
+.numero{
+  font-size: 30px;
+}
+@media (max-width: 730px) {
+  .numero{
+    font-size: 25px;
+  }
+  .icon-path{
+    font-size: 40px;
+    background-color: #6372E7;
+  
+  }
+  .grid-container {
+    background-color: var(--colorMain);
+    display: grid;
+    place-items: center;
+    height: 80vh;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+
+}
+@media (max-width: 412px) {
+  .numero{
+    font-size: 12px;
+  }
+  .icon-path{
+    font-size: 20px;
+    height: 28px;
+    background-color: #6372E7;
+  
+  }
+  .grid-container {
+    background-color: var(--colorMain);
+    display: grid;
+    place-items: center;
+    height: 40vh;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+}
+/*reports*/
+.reports{
+    margin: 50px;
+}
+
+.report-header-seekers{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.report-header-seekers input{
+    border: 1px solid var(--colorSecundary);
+    border-radius: 10px;
+}
+.report-header-seekers select{
+    border: 1px solid var(--colorSecundary);
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+}
+/*mora*/
+.mora{
+    margin: 50px;
+}
